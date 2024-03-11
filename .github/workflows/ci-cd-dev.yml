@@ -130,14 +130,14 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    needs: build
-#    steps:
-##      - name: Tailscale
-##        uses: tailscale/github-action@v2
-##        with:
-##          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-##          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-##          tags: tag:ci
-#
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: alex-ac/github-action-ssh-docker-compose@master
+      name: Docker-Stack Remote Deployment
+      with:
+        ssh_host: ${{ secrets.ssh_host }}
+        ssh_private_key: ${{ secrets.ssh_private_key }}
+        ssh_user: ${{ secrets.ssh_user }}
+        docker_compose_down: 'true'
