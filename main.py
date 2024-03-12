@@ -6,10 +6,11 @@ option = st.sidebar.selectbox(
      ('매인 홈페이지', '황준섭의 업적(?)', '기능 추가중'))
 if option == "매인 홈페이지":
     st.title("WELCOME 황준섭's site!")
-    img = Image.open('image/face.png')
+    # img = Image.open('image/face.png')
     empty1, image, empty2 = st.columns(3)
     empty1, texts, empty2 = st.columns(3)
-    image.write(img)
+    # image.write(img)
+    image.write("이미지 불러오는데 오류가 발생함")
     texts.write("""
     * 황준섭
     * 2011년 8월 26일생
