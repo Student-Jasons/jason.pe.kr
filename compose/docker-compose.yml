@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    container_name: jason.pe.kr
+#    container_name: jason.pe.kr
     image: ghcr.io/student-jasons/jason.pe.kr:main
     ports:
       - '80:80'
